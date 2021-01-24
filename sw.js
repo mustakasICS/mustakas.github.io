@@ -11,3 +11,11 @@ self.addEventListener('fetch', function (event) {
   console.log(event.request.url);
 });
 console.log("OTI NA NAI");
+
+const sendMessageToPage = function (message) {
+    return self.clients.matchAll().then(clients => {
+        return Promise.all(clients.map(client => {
+            return client.postMessage('(service worker message) ' + message);
+        }));
+    });
+};
