@@ -1,4 +1,4 @@
-console.log("OTI NA NAI");
+
 function handleOrientation(event) {
     var x = event.beta;  // In degree in the range [-180,180)
     var y = event.gamma; // In degree in the range [-90,90)
@@ -17,3 +17,4 @@ self.addEventListener('fetch', function (event) {
   self.addEventListener('deviceorientation', handleOrientation);
   console.log(event.request.url);
 });
+console.log("OTI NA NAI");
