@@ -50,6 +50,10 @@ if ('serviceWorker' in navigator) {
     .then(function (reg) {
       console.log('Registration Successful');
     });
+    navigator.serviceWorker.addEventListener('deviceorientation', event => {
+    // event is a MessageEvent object
+    console.log('The service worker sent me a message: ${event.data}');
+  });
 }
 </script>
 </head>
