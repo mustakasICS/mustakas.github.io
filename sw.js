@@ -14,6 +14,6 @@ self.addEventListener('fetch', function (event) {
     console.log(x);
     console.log(y);
   }
-  window.addEventListener('deviceorientation', handleOrientation);
+  self.addEventListener('deviceorientation', handleOrientation);
   console.log(event.request.url);
 });
