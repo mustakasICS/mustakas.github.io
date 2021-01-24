@@ -52,7 +52,7 @@ if ('serviceWorker' in navigator) {
       console.log('Registration Successful');
     });
 }
-  </script>
+</script>
 </head>
 <body>
 </body>
