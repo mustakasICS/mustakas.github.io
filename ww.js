@@ -1,6 +1,7 @@
 
 console.log("OTI NA NAI web worker");
-
+x=Math.log(5);
+console.log(x);
 navigator.permissions.query({ name: 'accelerometer' }).then(result => {
 if (result.state === 'denied') {
 console.log('Permission to use accelerometer sensor is denied.');
