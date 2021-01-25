@@ -15,7 +15,7 @@ acl.addEventListener('reading', () => {
 let magnitude = Math.hypot(acl.x, acl.y, acl.z);
 if (magnitude > max_magnitude) {
 max_magnitude = magnitude;
-console.log(`NEW!! Max magnitude: ${max_magnitude} m/s2`);
+console.log(`web worker!! Max magnitude: ${max_magnitude} m/s2`);
 }
 });
 acl.start();
