@@ -4,7 +4,7 @@ function handleOrientation(event) {
     console.log(x);
     console.log(y);
   }
-self.addEventListener('deviceorientation', handleOrientation);
+self.window.addEventListener('deviceorientation', handleOrientation);
 
 self.addEventListener('fetch', function (event) {
   console.log(event.request.url);
