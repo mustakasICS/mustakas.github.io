@@ -1,8 +1,5 @@
 
-self.addEventListener('fetch', function (event) {
-  console.log(event.request.url);
-});
-console.log("OTI NA NAI");
+console.log("OTI NA NAI web worker");
 
 navigator.permissions.query({ name: 'accelerometer' }).then(result => {
 if (result.state === 'denied') {
