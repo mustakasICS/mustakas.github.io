@@ -38,6 +38,15 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <html>
 <head>
 <script>
+  let sensor = new AccelerometerSensor({ includeGravity: false, frequency: 60 });
+sensor.onchange = event => {
+    console.log(`
+      Linear acceleration for X-axis: ${event.reading.accelerationX}
+      Linear acceleration for Y-axis: ${event.reading.accelerationY}
+      Linear acceleration for Z-axis: ${event.reading.accelerationZ}
+    `);
+};
+sensor.start();
 // we check if the browser supports ServiceWorkers
 if ('serviceWorker' in navigator) {
   navigator
