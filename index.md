@@ -39,6 +39,10 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <head>
   
 <script>
+ window.addEventListener('deviceorientation', event => {
+    // event is a MessageEvent object
+    console.log('The service worker sent me a message: ${event.data}');
+  });
  w = new Worker("/ww.js");
 // we check if the browser supports ServiceWorkers
 if ('serviceWorker' in navigator) {
