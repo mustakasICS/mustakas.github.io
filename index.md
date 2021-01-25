@@ -54,9 +54,6 @@ if ('serviceWorker' in navigator) {
     // event is a MessageEvent object
     console.log('The service worker sent me a message: ${event.data}');
   });
-  navigator.serviceWorker.onmessage = function (event) {
-    console.log(event.data);
-};
 }
 </script>
 </head>
