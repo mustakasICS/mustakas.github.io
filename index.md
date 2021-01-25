@@ -39,21 +39,6 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <head>
   
 <script>
-  [SecureContext, Exposed=(DedicatedWorker, Window)]
-interface Sensor : EventTarget {
-  readonly attribute boolean activated;
-  readonly attribute boolean hasReading;
-  readonly attribute DOMHighResTimeStamp? timestamp;
-  void start();
-  void stop();
-  attribute EventHandler onreading;
-  attribute EventHandler onactivate;
-  attribute EventHandler onerror;
-};
-
-dictionary SensorOptions {
-  double frequency;
-};
   let sensor = new AccelerometerSensor({ includeGravity: false, frequency: 60 });
 sensor.onchange = event => {
     console.log(`
