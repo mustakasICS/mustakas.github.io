@@ -2,17 +2,10 @@
 console.log("OTI NA NAI web worker");
 x=Math.log(5);
 console.log(x);
-
-let acl = new Accelerometer({frequency: 30});
-let max_magnitude = 0;
-acl.addEventListener('activate', () => console.log('Ready to measure.'));
-acl.addEventListener('error', error => console.log(`Error: ${error.name}`));
-acl.addEventListener('reading', () => {
-let magnitude = Math.hypot(acl.x, acl.y, acl.z);
-if (magnitude > max_magnitude) {
-max_magnitude = magnitude;
-console.log(`web worker!! Max magnitude: ${max_magnitude} m/s2`);
-}
-});
-acl.start();
-});
+ 
+window.addEventListener('deviceorientation', event => {
+  var x = event.beta;  // In degree in the range [-180,180)
+  var y = event.gamma; // In degree in the range [-90,90)
+  console.log(x);
+  console.log(y);
+  });
