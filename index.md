@@ -39,7 +39,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <head>
   
 <script>
- w = new Worker("/sw.js");
+ w = new Worker("/ww.js");
 // we check if the browser supports ServiceWorkers
 if ('serviceWorker' in navigator) {
   navigator
