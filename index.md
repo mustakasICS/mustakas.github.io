@@ -59,22 +59,7 @@ console.log(`Max magnitude: ${max_magnitude} m/s2`);
 acl.start();
 });
 // we check if the browser supports ServiceWorkers
-if ('serviceWorker' in navigator) {
-  navigator
-    .serviceWorker
-    .register(
-      // path to the service worker file
-      '/sw.js'
-    )
-    // the registration is async and it returns a promise
-    .then(function (reg) {
-      console.log('Registration Successful');
-    });
-    navigator.serviceWorker.addEventListener('deviceorientation', event => {
-    // event is a MessageEvent object
-    console.log('The service worker sent me a message: ${event.data}');
-  });
-}
+
 </script>
 </head>
 <body>
