@@ -84,7 +84,7 @@ const sensorAL = new AmbientLightSensor();
 const options = { frequency: 60, referenceFrame: 'device' };
 const sensorAO = new AbsoluteOrientationSensor(options);
 
-sensor.addEventListener('reading', () => {
+sensorAO.addEventListener('reading', () => {
   console.log('ABSORIENTATION',sensorAO.quaternion[0]);
   console.log('ABSORIENTATION',sensorAO.quaternion[1]);
   console.log('ABSORIENTATION',sensorAO.quaternion[2]);
