@@ -61,10 +61,10 @@ const options = { frequency: 60, referenceFrame: 'device' };
 const sensorAO = new AbsoluteOrientationSensor(options);
 
 sensorAO.addEventListener('reading', () => {
-  console.log('ABSORIENTATION',sensorAO.quaternion[0]);
-  console.log('ABSORIENTATION',sensorAO.quaternion[1]);
-  console.log('ABSORIENTATION',sensorAO.quaternion[2]);
-  console.log('ABSORIENTATION',sensorAO.quaternion[3]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[0]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[1]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[2]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[3]);
 });
   sensorAO.start();
 
@@ -73,7 +73,7 @@ let gyro = new Gyroscope({frequency: 30});
 gyro.addEventListener('activate', () => console.log('Ready to measure.'));
 gyro.addEventListener('error', error => console.log(`Error: ${error.name}`));
 gyro.addEventListener('reading', () => {
-console.log('GYROSCOPE', gyro.x, gyro.y, gyro.z);
+console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z);
 });
 gyro.start();
 
@@ -85,6 +85,14 @@ laSensor.addEventListener('reading', e => {
 });
 laSensor.start();
 
+const rel_se = new RelativeOrientationSensor(options);
+rel_se.addEventListener('reading', () => {
+  console.log("RELATIVEORIENT "+rel_se.quaternion[0]);
+  console.log('RELATIVEORIENT "+rel_se.quaternion[1]);
+  console.log('RELATIVEORIENT "+rel_se.quaternion[2]);
+  console.log('RELATIVEORIENT "+rel_se.quaternion[3]);
+});
+rel_se.start();
 
 let magSensor = new Magnetometer({frequency: 5});
 magSensor.addEventListener('reading', e => {
@@ -93,17 +101,6 @@ magSensor.addEventListener('reading', e => {
   console.log("Magnetic field along the Z-axis " + magSensor.z);
 });
 magSensor.start();
-
-
-
-const rel_se = new RelativeOrientationSensor(options);
-rel_se.addEventListener('reading', () => {
-  console.log('RELATIVEORIENT',rel_se.quaternion[0]);
-  console.log('RELATIVEORIENT',rel_se.quaternion[1]);
-  console.log('RELATIVEORIENT',rel_se.quaternion[2]);
-  console.log('RELATIVEORIENT',rel_se.quaternion[3]);
-});
-rel_se.start();
 
 const sensorAL = new AmbientLightSensor();
   sensorAL.onreading = () => {
