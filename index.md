@@ -110,7 +110,7 @@ laSensor.addEventListener('reading', e => {
 laSensor.start();
 
 
-let magSensor = new Magnetometer({frequency: 60});
+let magSensor = new Magnetometer({frequency: 5});
 magSensor.addEventListener('reading', e => {
   console.log("Magnetic field along the X-axis " + magSensor.x);
   console.log("Magnetic field along the Y-axis " + magSensor.y);
