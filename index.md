@@ -119,7 +119,7 @@ magSensor.addEventListener('reading', e => {
 magSensor.start();
 
 
-const options = { frequency: 60, referenceFrame: 'device' };
+
 const rel_se = new RelativeOrientationSensor(options);
 rel_se.addEventListener('reading', () => {
   console.log('RELATIVEORIENT',rel_se.quaternion[0]);
