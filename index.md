@@ -57,13 +57,6 @@ console.log(`NEW!! Max magnitude: ${max_magnitude} m/s2`);
 });
 acl.start();
   
-const sensorAL = new AmbientLightSensor();
-  sensorAL.onreading = () => {
-    console.log('Current light level:', sensorAL.illuminance);
-  };
-  sensorAL.start();
-
-
 const options = { frequency: 60, referenceFrame: 'device' };
 const sensorAO = new AbsoluteOrientationSensor(options);
 
@@ -111,6 +104,12 @@ rel_se.addEventListener('reading', () => {
   console.log('RELATIVEORIENT',rel_se.quaternion[3]);
 });
 rel_se.start();
+
+const sensorAL = new AmbientLightSensor();
+  sensorAL.onreading = () => {
+    console.log('Current light level:', sensorAL.illuminance);
+  };
+  sensorAL.start();
 
 </script>
 </head>
