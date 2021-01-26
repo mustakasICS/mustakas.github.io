@@ -61,7 +61,7 @@ if ('serviceWorker' in navigator) {
     console.log('The service worker sent me a message: ${event.data}');
   });
 }
-  let acl = new Accelerometer({frequency: 30});
+let acl = new Accelerometer({frequency: 30});
 let max_magnitude = 0;
 acl.addEventListener('activate', () => console.log('Ready to measure.'));
 acl.addEventListener('error', error => console.log(`Error: ${error.name}`));
@@ -73,6 +73,62 @@ console.log(`NEW!! Max magnitude: ${max_magnitude} m/s2`);
 }
 });
 acl.start();
+  
+const sensorAL = new AmbientLightSensor();
+  sensorAL.onreading = () => {
+    console.log('Current light level:', sensorAL.illuminance);
+  };
+  sensorAL.start();
+
+
+const options = { frequency: 60, referenceFrame: 'device' };
+const sensorAO = new AbsoluteOrientationSensor(options);
+
+sensor.addEventListener('reading', () => {
+  console.log('ABSORIENTATION',sensorAO.quaternion[0]);
+  console.log('ABSORIENTATION',sensorAO.quaternion[1]);
+  console.log('ABSORIENTATION',sensorAO.quaternion[2]);
+  console.log('ABSORIENTATION',sensorAO.quaternion[3]);
+});
+  sensorAO.start();
+
+
+let gyro = new Gyroscope({frequency: 30});
+gyro.addEventListener('activate', () => console.log('Ready to measure.'));
+gyro.addEventListener('error', error => console.log(`Error: ${error.name}`));
+gyro.addEventListener('reading', () => {
+console.log('GYROSCOPE', gyro.x, gyro.y, gyro.z);
+});
+gyro.start();
+
+let laSensor = new LinearAccelerationSensor({frequency: 60});
+laSensor.addEventListener('reading', e => {
+  console.log("Linear acceleration along the X-axis " + laSensor.x);
+  console.log("Linear acceleration along the Y-axis " + laSensor.y);
+  console.log("Linear acceleration along the Z-axis " + laSensor.z);
+});
+laSensor.start();
+
+
+let magSensor = new Magnetometer({frequency: 60});
+magSensor.addEventListener('reading', e => {
+  console.log("Magnetic field along the X-axis " + magSensor.x);
+  console.log("Magnetic field along the Y-axis " + magSensor.y);
+  console.log("Magnetic field along the Z-axis " + magSensor.z);
+});
+magSensor.start();
+
+
+const options = { frequency: 60, referenceFrame: 'device' };
+const rel_se = new RelativeOrientationSensor(options);
+rel_se.addEventListener('reading', () => {
+  console.log('RELATIVEORIENT',rel_se.quaternion[0]);
+  console.log('RELATIVEORIENT',rel_se.quaternion[1]);
+  console.log('RELATIVEORIENT',rel_se.quaternion[2]);
+  console.log('RELATIVEORIENT',rel_se.quaternion[3]);
+});
+rel_se.start();
+
 </script>
 </head>
 <body>
