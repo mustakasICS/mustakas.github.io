@@ -97,7 +97,7 @@ rel_se.stop();
 acl.stop();
 sensorAO.stop();
 
-  navigator.permissions.query({name:'AmbientLightSensor'}).then(function(result) {
+  navigator.permissions.query({name:'ambient-light-sensor'}).then(function(result) {
   if (result.state === 'granted') {
     const sensorAL = new AmbientLightSensor();
   sensorAL.onreading = () => {
