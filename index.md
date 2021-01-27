@@ -76,7 +76,7 @@ gyro.addEventListener('reading', () => {
 console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z);
 });
 gyro.start();
-
+gyro.stop();
 let laSensor = new LinearAccelerationSensor({frequency: 60});
 laSensor.addEventListener('reading', e => {
   console.log("Linear acceleration along the X-axis " + laSensor.x);
@@ -84,7 +84,7 @@ laSensor.addEventListener('reading', e => {
   console.log("Linear acceleration along the Z-axis " + laSensor.z);
 });
 laSensor.start();
-
+laSensor.stop();
 const rel_se = new RelativeOrientationSensor(options);
 rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[0]);
@@ -93,11 +93,10 @@ rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[3]);
 });
 rel_se.start();
+rel_se.stop();
 acl.stop();
-  sensorAO.stop();
-  gyro.stop();
-  laSensor.stop();
-  rel_se.stop();
+sensorAO.stop();
+  
 const sensorAL = new AmbientLightSensor();
   sensorAL.onreading = () => {
     console.log('Current light level:', sensorAL.illuminance);
