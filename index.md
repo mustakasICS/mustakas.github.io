@@ -44,7 +44,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
     console.log('The service worker sent me a message: ${event.data}');
   });
 
-let acl = new Accelerometer({frequency: 30});
+let acl = new Accelerometer();
 let max_magnitude = 0;
 acl.addEventListener('activate', () => console.log('Ready to measure.'));
 acl.addEventListener('error', error => console.log(`Error: ${error.name}`));
