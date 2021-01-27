@@ -96,12 +96,20 @@ rel_se.start();
 rel_se.stop();
 acl.stop();
 sensorAO.stop();
-  
-const sensorAL = new AmbientLightSensor();
+
+  navigator.permissions.query({name:'geolocation'}).then(function(result) {
+  if (result.state === 'granted') {
+    const sensorAL = new AmbientLightSensor();
   sensorAL.onreading = () => {
     console.log('Current light level:', sensorAL.illuminance);
   };
   sensorAL.start();
+  } else if (result.state === 'prompt') {
+    console.log("ERRORRRRRRR");
+  }
+  // Don't do anything if the permission was denied.
+});
+
 
 
 
