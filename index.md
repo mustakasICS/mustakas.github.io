@@ -94,6 +94,14 @@ rel_se.addEventListener('reading', () => {
 });
 rel_se.start();
 
+const sensorAL = new AmbientLightSensor();
+  sensorAL.onreading = () => {
+    console.log('Current light level:', sensorAL.illuminance);
+  };
+  sensorAL.start();
+
+
+
 acl.stop();
   sensorAO.stop();
   gyro.stop();
