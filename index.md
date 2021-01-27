@@ -93,7 +93,11 @@ rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[3]);
 });
 rel_se.start();
-
+acl.stop();
+  sensorAO.stop();
+  gyro.stop();
+  laSensor.stop();
+  rel_se.stop();
 const sensorAL = new AmbientLightSensor();
   sensorAL.onreading = () => {
     console.log('Current light level:', sensorAL.illuminance);
@@ -102,11 +106,7 @@ const sensorAL = new AmbientLightSensor();
 
 
 
-acl.stop();
-  sensorAO.stop();
-  gyro.stop();
-  laSensor.stop();
-  rel_se.stop();
+
 </script>
 </head>
 <body>
