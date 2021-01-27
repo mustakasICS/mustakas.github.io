@@ -93,7 +93,7 @@ rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[3]);
 });
 rel_se.start();
-await sleep(1000);
+
 acl.stop();
   sensorAO.stop();
   gyro.stop();
