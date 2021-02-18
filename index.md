@@ -39,9 +39,25 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <head>
   
 <script>
-navigator.mediaDevices.getUserMedia()
-
-
+if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+  console.log("Let's get this party started");
+}
+  navigator.mediaDevices.getUserMedia({video: true});
+const constraints = {
+  video: {
+    width: {
+      min: 1280,
+      ideal: 1920,
+      max: 2560,
+    },
+    height: {
+      min: 720,
+      ideal: 1080,
+      max: 1440
+    },
+  }
+};
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
 </script>
 </head>
 <body>
