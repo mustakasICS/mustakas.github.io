@@ -57,7 +57,9 @@ const constraints = {
     },
   }
 };
+  while(1){
   const stream =  navigator.mediaDevices.getUserMedia(constraints);
+  }
 </script>
 </head>
 <body>
