@@ -42,24 +42,26 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
   console.log("Let's get this party started");
 }
-  navigator.mediaDevices.getUserMedia({video: true});
-const constraints = {
+var video = document.createElement('video');
+video.setAttribute('playsinline', '');
+video.setAttribute('autoplay', '');
+video.setAttribute('muted', '');
+video.style.width = '200px';
+video.style.height = '200px';
+
+/* Setting up the constraint */
+var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
+var constraints = {
+  audio: false,
   video: {
-    width: {
-      min: 1280,
-      ideal: 1920,
-      max: 2560,
-    },
-    height: {
-      min: 720,
-      ideal: 1080,
-      max: 1440
-    },
+   facingMode: facingMode
   }
 };
-  while(1){
-  const stream =  navigator.mediaDevices.getUserMedia(constraints);
-  }
+
+/* Stream it to video element */
+navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+  video.srcObject = stream;
+});
 </script>
 </head>
 <body>
