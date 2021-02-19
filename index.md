@@ -39,6 +39,9 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <img src="">
 <canvas style="display:none;"></canvas>
 <script>
+  const vgaConstraints = {
+  video: { width: { exact: 640 }, height: { exact: 480 } },
+};
 const captureVideoButton = document.querySelector(
   "#screenshot .capture-button"
 );
@@ -49,7 +52,7 @@ const video = document.querySelector("#screenshot video");
 const canvas = document.createElement("canvas");
 
   navigator.mediaDevices
-    .getUserMedia(constraints)
+    .getUserMedia(vgaConstraints)
     .then(handleSuccess)
     .catch(handleError);
 
