@@ -36,78 +36,34 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
 <video autoplay></video>
+<img src="">
+<canvas style="display:none;"></canvas>
 <script>
-function hasGetUserMedia() {
-  return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-}
-if (hasGetUserMedia()) {
-const vgaConstraints = {
-  video: { width: { exact: 640 }, height: { exact: 480 } },
-};
-const videoElement = document.querySelector("video");
-const audioSelect = document.querySelector("select#audioSource");
-const videoSelect = document.querySelector("select#videoSource");
+const captureVideoButton = document.querySelector(
+  "#screenshot .capture-button"
+);
+const screenshotButton = document.querySelector("#screenshot-button");
+const img = document.querySelector("#screenshot img");
+const video = document.querySelector("#screenshot video");
 
-navigator.mediaDevices
-  .enumerateDevices()
-  .then(gotDevices)
-  .then(getStream)
-  .catch(handleError);
-
-audioSelect.onchange = getStream;
-videoSelect.onchange = getStream;
-
-function gotDevices(deviceInfos) {
-  for (let i = 0; i !== deviceInfos.length; ++i) {
-    const deviceInfo = deviceInfos[i];
-    const option = document.createElement("option");
-    option.value = deviceInfo.deviceId;
-    if (deviceInfo.kind === "audioinput") {
-      option.text =
-        deviceInfo.label || "microphone " + (audioSelect.length + 1);
-      audioSelect.appendChild(option);
-    } else if (deviceInfo.kind === "videoinput") {
-      option.text = deviceInfo.label || "camera " + (videoSelect.length + 1);
-      videoSelect.appendChild(option);
-    } else {
-      console.log("Found another kind of device: ", deviceInfo);
-    }
-  }
-}
-
-function getStream() {
-  if (window.stream) {
-    window.stream.getTracks().forEach(function (track) {
-      track.stop();
-    });
-  }
-
-  const constraints = {
-    audio: {
-      deviceId: { exact: audioSelect.value },
-    },
-    video: {
-      deviceId: { exact: videoSelect.value },
-    },
-  };
+const canvas = document.createElement("canvas");
 
   navigator.mediaDevices
     .getUserMedia(constraints)
-    .then(gotStream)
+    .then(handleSuccess)
     .catch(handleError);
-}
 
-function gotStream(stream) {
-  window.stream = stream; // make stream available to console
-  videoElement.srcObject = stream;
-}
 
-function handleError(error) {
-  console.error("Error: ", error);
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  canvas.getContext("2d").drawImage(video, 0, 0);
+  // Other browsers will fall back to image/png
+  img.src = canvas.toDataURL("image/webp");
+
+
+function handleSuccess(stream) {
+  screenshotButton.disabled = false;
+  video.srcObject = stream;
 }
-} else {
-  alert("getUserMedia() is not supported by your browser");
-}
-  
-  
 </script>
