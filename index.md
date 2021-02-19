@@ -39,33 +39,42 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <img src="">
 <canvas style="display:none;"></canvas>
 <script>
-  const vgaConstraints = {
-  video: { width: { exact: 640 }, height: { exact: 480 } },
+const constraints = window.constraints = {
+  audio: false,
+  video: true
 };
-const captureVideoButton = document.querySelector(
-  "#screenshot .capture-button"
-);
-const screenshotButton = document.querySelector("#screenshot-button");
-const img = document.querySelector("#screenshot img");
-const video = document.querySelector("#screenshot video");
-
-const canvas = document.createElement("canvas");
-
-  navigator.mediaDevices
-    .getUserMedia(vgaConstraints)
-    .then(handleSuccess);
-
-
-
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  canvas.getContext("2d").drawImage(video, 0, 0);
-  // Other browsers will fall back to image/png
-  img.src = canvas.toDataURL("image/webp");
-
 
 function handleSuccess(stream) {
-  screenshotButton.disabled = false;
+  const video = document.querySelector('video');
+  const videoTracks = stream.getVideoTracks();
+  console.log('Got stream with constraints:', constraints);
+  console.log(`Using video device: ${videoTracks[0].label}`);
+  window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
 }
+
+function handleError(error) {
+  if (error.name === 'ConstraintNotSatisfiedError') {
+    const v = constraints.video;
+    errorMsg(`The resolution ${v.width.exact}x${v.height.exact} px is not supported by your device.`);
+  } else if (error.name === 'PermissionDeniedError') {
+    errorMsg('Permissions have not been granted to use your camera and ' +
+      'microphone, you need to allow the page access to your devices in ' +
+      'order for the demo to work.');
+  }
+  errorMsg(`getUserMedia error: ${error.name}`, error);
+}
+
+function errorMsg(msg, error) {
+  const errorElement = document.querySelector('#errorMsg');
+  errorElement.innerHTML += `<p>${msg}</p>`;
+  if (typeof error !== 'undefined') {
+    console.error(error);
+  }
+}
+
+const stream = await navigator.mediaDevices.getUserMedia(constraints);
+handleSuccess(stream);
+e.target.disabled = true;
+
 </script>
