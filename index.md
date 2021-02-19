@@ -35,7 +35,7 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-<video autoplay></video>
+<video autoplay playsinline></video>
 <img src="">
 <canvas style="display:none;"></canvas>
 <script>
@@ -46,9 +46,7 @@ const constraints = window.constraints = {
 
 function handleSuccess(stream) {
   const video = document.querySelector('video');
-  const videoTracks = stream.getVideoTracks();
   console.log('Got stream with constraints:', constraints);
-  console.log(`Using video device: ${videoTracks[0].label}`);
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
 }
