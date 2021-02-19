@@ -48,7 +48,7 @@ function handleSuccess(stream) {
   const video = document.querySelector('video');
   console.log('Got stream with constraints:', constraints);
   window.stream = stream; // make variable available to browser console
-  video.srcObject = stream;
+  video.srcObject = window.URL.createObjectURL(stream);
 }
 
 function handleError(error) {
