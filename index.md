@@ -43,14 +43,19 @@ const constraints = window.constraints = {
   audio: false,
   video: true
 };
-const stream = navigator.mediaDevices.getUserMedia(constraints);
+const stream = await navigator.mediaDevices.getUserMedia(constraints);
   
 function handleSuccess(stream) {
   const video = document.querySelector('video');
   console.log('Got stream with constraints:', constraints);
   console.log('Got did:', video);
   window.stream = stream; // make variable available to browser console
-  video.src = URL.createObjectURL(stream);
+  if ('srcObject' in video) {
+  video.srcObject = mediaStream;
+} else {
+  // Avoid using this in new browsers, as it is going away.
+  video.src = URL.createObjectURL(mediaStream);
+}
 }
 
 function handleError(error) {
