@@ -43,14 +43,14 @@ const constraints = window.constraints = {
   audio: false,
   video: true
 };
-
+const stream = navigator.mediaDevices.getUserMedia(constraints);
+  
 function handleSuccess(stream) {
   const video = document.querySelector('video');
   console.log('Got stream with constraints:', constraints);
   console.log('Got did:', video);
   window.stream = stream; // make variable available to browser console
-  const mediaSource = new MediaSource();
-  video.src = URL.createObjectURL(mediaSource);
+  video.src = URL.createObjectURL(stream);
 }
 
 function handleError(error) {
@@ -73,7 +73,7 @@ function errorMsg(msg, error) {
   }
 }
 
-const stream = navigator.mediaDevices.getUserMedia(constraints);
+
 handleSuccess(stream);
 
 
