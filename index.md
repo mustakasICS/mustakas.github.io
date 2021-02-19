@@ -53,8 +53,7 @@ const canvas = document.createElement("canvas");
 
   navigator.mediaDevices
     .getUserMedia(vgaConstraints)
-    .then(handleSuccess)
-    .catch(handleError);
+    .then(handleSuccess);
 
 
 
