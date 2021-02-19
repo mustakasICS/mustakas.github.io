@@ -73,7 +73,7 @@ function errorMsg(msg, error) {
   }
 }
 
-const stream = await navigator.mediaDevices.getUserMedia(constraints);
+const stream = navigator.mediaDevices.getUserMedia(constraints);
 handleSuccess(stream);
 e.target.disabled = true;
 
