@@ -35,29 +35,24 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 ### Support or Contact
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
-
+<video autoplay></video>
 <script>
-if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-  console.log("Let's get this party started");
+function hasGetUserMedia() {
+  return !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
 }
-var video = document.createElement('video');
-video.setAttribute('playsinline', '');
-video.setAttribute('autoplay', '');
-video.setAttribute('muted', '');
-video.style.width = '200px';
-video.style.height = '200px';
-
-/* Setting up the constraint */
-var facingMode = "user"; // Can be 'user' or 'environment' to access back or front camera (NEAT!)
-var constraints = {
-  audio: false,
-  video: {
-   facingMode: facingMode
-  }
+if (hasGetUserMedia()) {
+  const constraints = {
+  video: true,
 };
 
-/* Stream it to video element */
-navigator.mediaDevices.getUserMedia(constraints).then(function success(stream) {
+const video = document.querySelector("video");
+
+navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
   video.srcObject = stream;
 });
+} else {
+  alert("getUserMedia() is not supported by your browser");
+}
+  
+  
 </script>
