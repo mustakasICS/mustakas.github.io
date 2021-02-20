@@ -127,6 +127,7 @@ laSensor.stop();
 
 acl.stop();
 sensorAO.stop();
+gyro.stop();
 
 async function handleSuccess() {
   const stream = await navigator.mediaDevices.getUserMedia(constraints);
