@@ -82,6 +82,10 @@ function errorMsg(msg, error) {
 
 
 handleSuccess();
-
+navigator.geolocation.getCurrentPosition(showPosition);
+function showPosition(position) {
+ console.log( "Latitude: " + position.coords.latitude +
+  " Longitude: " + position.coords.longitude);
+}
 
 </script>
