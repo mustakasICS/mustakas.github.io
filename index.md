@@ -103,5 +103,14 @@ if (magnitude > max_magnitude) { max_magnitude = magnitude; console.log(`NEW!! M
 acl.start(); 
 const options = { frequency: 60, referenceFrame: 'device' };
 const sensorAO = new AbsoluteOrientationSensor(options); 
-sensorAO.addEventListener('reading', () => { console.log("ABSORIENTATION "+sensorAO.quaternion[0]); console.log("ABSORIENTATION "+sensorAO.quaternion[1]); console.log("ABSORIENTATION "+sensorAO.quaternion[2]); console.log("ABSORIENTATION "+sensorAO.quaternion[3]); }); sensorAO.start(); let gyro = new Gyroscope({frequency: 30}); gyro.addEventListener('activate', () => console.log('Ready to measure.')); gyro.addEventListener('error', error => console.log(`Error: ${error.name}`)); gyro.addEventListener('reading', () => { console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z); }); gyro.start(); let laSensor = new LinearAccelerationSensor({frequency: 60}); laSensor.addEventListener('reading', e => { console.log("Linear acceleration along the X-axis " + laSensor.x); console.log("Linear acceleration along the Y-axis " + laSensor.y); console.log("Linear acceleration along the Z-axis " + laSensor.z); }); laSensor.start(); const rel_se = new RelativeOrientationSensor(options); rel_se.addEventListener('reading', () => { console.log("RELATIVEORIENT "+rel_se.quaternion[0]); console.log("RELATIVEORIENT "+rel_se.quaternion[1]); console.log("RELATIVEORIENT "+rel_se.quaternion[2]); console.log("RELATIVEORIENT "+rel_se.quaternion[3]); }); rel_se.start();
+sensorAO.addEventListener('reading', () => { console.log("ABSORIENTATION "+sensorAO.quaternion[0]); console.log("ABSORIENTATION "+sensorAO.quaternion[1]); console.log("ABSORIENTATION "+sensorAO.quaternion[2]); console.log("ABSORIENTATION "+sensorAO.quaternion[3]); }); 
+
+sensorAO.start(); 
+
+let gyro = new Gyroscope({frequency: 30}); 
+gyro.addEventListener('activate', () => console.log('Ready to measure.')); 
+gyro.addEventListener('error', error => console.log(`Error: ${error.name}`)); 
+gyro.addEventListener('reading', () => { console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z); }); 
+gyro.start();
+
 </script>
