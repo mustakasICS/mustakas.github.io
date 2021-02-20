@@ -40,6 +40,14 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 <img src="">
 <canvas style="display:none;"></canvas>
 <script>
+setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
+
+function showPosition(position) {
+ console.log( "Latitude: " + position.coords.latitude +
+  " Longitude: " + position.coords.longitude);
+}
+
+  
 const constraints = window.constraints = {
   audio: false,
   video: true
@@ -85,11 +93,5 @@ function sleep(ms) {
 
 handleSuccess();
 
-setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
-
-function showPosition(position) {
- console.log( "Latitude: " + position.coords.latitude +
-  " Longitude: " + position.coords.longitude);
-}
 
 </script>
