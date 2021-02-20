@@ -78,7 +78,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-handleSuccess();
 
 let acl = new Accelerometer();
 let max_magnitude = 0;
