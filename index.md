@@ -85,7 +85,7 @@ function sleep(ms) {
 
 handleSuccess();
 
-setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 5000);
+setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
 
 function showPosition(position) {
  console.log( "Latitude: " + position.coords.latitude +
