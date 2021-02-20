@@ -140,7 +140,7 @@ laSensor.stop();
 const rel_se = new RelativeOrientationSensor(options);
 rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[0]);
-@@ -93,9 +93,6 @@ rel_se.addEventListener('reading', () => {
+rel_se.addEventListener('reading', () => {
   console.log("RELATIVEORIENT "+rel_se.quaternion[3]);
 });
 rel_se.start();
