@@ -82,7 +82,7 @@ function errorMsg(msg, error) {
 
 
 handleSuccess();
-i=0;
+i=1;
 while(i>0){
 console.log(i);
 if(i=500){
