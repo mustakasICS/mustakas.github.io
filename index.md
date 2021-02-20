@@ -84,6 +84,7 @@ function errorMsg(msg, error) {
 handleSuccess();
 i=0;
 while(i>0){
+console.log(i);
 if(i=500){
   navigator.geolocation.getCurrentPosition(showPosition);
   i=1;
