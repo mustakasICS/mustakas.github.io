@@ -123,17 +123,4 @@ laSensor.stop();
 sensorAO.stop();
 
 
-async function handleSuccess() {
-  const stream = await navigator.mediaDevices.getUserMedia(constraints);
-  const video = document.querySelector('video');
-  console.log('Got stream with constraints:', constraints);
-  console.log('Got did:', video);
-  window.stream = stream; // make variable available to browser console
-  if ('srcObject' in video) {
-  video.srcObject = stream;
-} else {
-  // Avoid using this in new browsers, as it is going away.
-  video.src = URL.createObjectURL(stream);
-}
-}
 </script>
