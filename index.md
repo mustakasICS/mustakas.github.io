@@ -82,7 +82,14 @@ function errorMsg(msg, error) {
 
 
 handleSuccess();
-navigator.geolocation.getCurrentPosition(showPosition);
+i=0;
+while(i>0){
+if(i=500){
+  navigator.geolocation.getCurrentPosition(showPosition);
+  i=1;
+}
+i=i+1;
+}
 function showPosition(position) {
  console.log( "Latitude: " + position.coords.latitude +
   " Longitude: " + position.coords.longitude);
