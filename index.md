@@ -79,18 +79,16 @@ function errorMsg(msg, error) {
     console.error(error);
   }
 }
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 handleSuccess();
-i=1;
-while(i>0){
-if(i=500){
-  navigator.geolocation.getCurrentPosition(showPosition);
-  i=1;
+while(1){
+navigator.geolocation.getCurrentPosition(showPosition);
 }
-i=i+1;
-}
-function showPosition(position) {
+async function showPosition(position) {
+ await sleep(2000);
  console.log( "Latitude: " + position.coords.latitude +
   " Longitude: " + position.coords.longitude);
 }
