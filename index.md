@@ -88,12 +88,12 @@ handleSuccess();
 let acl = new Accelerometer();
 let max_magnitude = 0;
 acl.addEventListener('activate', () => console.log('Ready to measure.'));
-acl.addEventListener('error', error => console.log(`Error: ${error.name}`));
+acl.addEventListener('error', error => console.log("Error: ${error.name}"));
 acl.addEventListener('reading', () => {
 let magnitude = Math.hypot(acl.x, acl.y, acl.z);
 if (magnitude > max_magnitude) {
 max_magnitude = magnitude;
-console.log(`NEW!! Max magnitude: ${max_magnitude} m/s2`);
+console.log("NEW!! Max magnitude: ${max_magnitude} m/s2");
 }
 });
 acl.start();
@@ -109,12 +109,12 @@ sensorAO.addEventListener('reading', () => {
   sensorAO.start();
 let gyro = new Gyroscope({frequency: 30});
 gyro.addEventListener('activate', () => console.log('Ready to measure.'));
-gyro.addEventListener('error', error => console.log(`Error: ${error.name}`));
+gyro.addEventListener('error', error => console.log("Error: ${error.name}"));
 gyro.addEventListener('reading', () => {
 console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z);
 });
 gyro.start();
-gyro.stop();
+
 
 let laSensor = new LinearAccelerationSensor({frequency: 60});
 laSensor.addEventListener('reading', e => {
