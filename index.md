@@ -93,24 +93,60 @@ function sleep(ms) {
 
 handleSuccess();
 
-window.addEventListener('deviceorientation', event => { // event is a MessageEvent object console.log('The service worker sent me a message: ${event.data}'); }); 
-let acl = new Accelerometer(); 
-let max_magnitude = 0; 
-acl.addEventListener('activate', () => console.log('Ready to measure.')); 
-acl.addEventListener('error', error => console.log('Error: ${error.name}')); 
-acl.addEventListener('reading', () => { let magnitude = Math.hypot(acl.x, acl.y, acl.z); 
-if (magnitude > max_magnitude) { max_magnitude = magnitude; console.log('NEW!! Max magnitude: ${max_magnitude} m/s2'); }});
-acl.start(); 
+ window.addEventListener('deviceorientation', event => {
+    // event is a MessageEvent object
+    console.log('The service worker sent me a message: ${event.data}');
+  });
+let acl = new Accelerometer();
+let max_magnitude = 0;
+acl.addEventListener('activate', () => console.log('Ready to measure.'));
+acl.addEventListener('error', error => console.log(`Error: ${error.name}`));
+acl.addEventListener('reading', () => {
+let magnitude = Math.hypot(acl.x, acl.y, acl.z);
+if (magnitude > max_magnitude) {
+max_magnitude = magnitude;
+console.log(`NEW!! Max magnitude: ${max_magnitude} m/s2`);
+}
+});
+acl.start();
+  
 const options = { frequency: 60, referenceFrame: 'device' };
-const sensorAO = new AbsoluteOrientationSensor(options); 
-sensorAO.addEventListener('reading', () => { console.log("ABSORIENTATION "+sensorAO.quaternion[0]); console.log("ABSORIENTATION "+sensorAO.quaternion[1]); console.log("ABSORIENTATION "+sensorAO.quaternion[2]); console.log("ABSORIENTATION "+sensorAO.quaternion[3]); }); 
-
-sensorAO.start(); 
-
-let gyro = new Gyroscope({frequency: 30}); 
-gyro.addEventListener('activate', () => console.log('Ready to measure.')); 
-gyro.addEventListener('error', error => console.log('Error: ${error.name}')); 
-gyro.addEventListener('reading', () => { console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z); }); 
+const sensorAO = new AbsoluteOrientationSensor(options);
+sensorAO.addEventListener('reading', () => {
+  console.log("ABSORIENTATION "+sensorAO.quaternion[0]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[1]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[2]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[3]);
+});
+  sensorAO.start();
+let gyro = new Gyroscope({frequency: 30});
+gyro.addEventListener('activate', () => console.log('Ready to measure.'));
+gyro.addEventListener('error', error => console.log(`Error: ${error.name}`));
+gyro.addEventListener('reading', () => {
+console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z);
+});
 gyro.start();
+gyro.stop();
+
+let laSensor = new LinearAccelerationSensor({frequency: 60});
+laSensor.addEventListener('reading', e => {
+  console.log("Linear acceleration along the X-axis " + laSensor.x);
+  console.log("Linear acceleration along the Y-axis " + laSensor.y);
+  console.log("Linear acceleration along the Z-axis " + laSensor.z);
+});
+laSensor.start();
+laSensor.stop();
+
+const rel_se = new RelativeOrientationSensor(options);
+rel_se.addEventListener('reading', () => {
+  console.log("RELATIVEORIENT "+rel_se.quaternion[0]);
+@@ -93,9 +93,6 @@ rel_se.addEventListener('reading', () => {
+  console.log("RELATIVEORIENT "+rel_se.quaternion[3]);
+});
+rel_se.start();
+rel_se.stop();
+acl.stop();
+sensorAO.stop();
+
 
 </script>
