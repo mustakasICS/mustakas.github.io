@@ -43,7 +43,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
 
 function showPosition(position) {
- //console.log( "Latitude: " + position.coords.latitude +" Longitude: " + position.coords.longitude);
+ console.log( "Latitude: " + position.coords.latitude +" Longitude: " + position.coords.longitude);
 }
 
   
