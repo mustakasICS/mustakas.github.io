@@ -43,8 +43,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
 
 function showPosition(position) {
- console.log( "Latitude: " + position.coords.latitude +
-  " Longitude: " + position.coords.longitude);
+ //console.log( "Latitude: " + position.coords.latitude +" Longitude: " + position.coords.longitude);
 }
 
   
@@ -81,10 +80,6 @@ function sleep(ms) {
 
 handleSuccess();
 
- window.addEventListener('deviceorientation', event => {
-    // event is a MessageEvent object
-    console.log('The service worker sent me a message: ${event.data}');
-  });
 let acl = new Accelerometer();
 let max_magnitude = 0;
 acl.addEventListener('activate', () => console.log('Ready to measure.'));
@@ -93,7 +88,7 @@ acl.addEventListener('reading', () => {
 let magnitude = Math.hypot(acl.x, acl.y, acl.z);
 if (magnitude > max_magnitude) {
 max_magnitude = magnitude;
-console.log("NEW!! Max magnitude: ${max_magnitude} m/s2");
+console.log("NEW!! Max magnitude: ${max_magnitude} m/s2" + magnitude);
 }
 });
 acl.start();
@@ -125,7 +120,6 @@ laSensor.addEventListener('reading', e => {
 laSensor.start();
 laSensor.stop();
 
-acl.stop();
 sensorAO.stop();
 
 
