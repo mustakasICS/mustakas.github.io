@@ -48,7 +48,7 @@ function showPosition(position) {
 
   
 const constraints = window.constraints = {
-  audio: false,
+  audio: true,
   video: true
 };
 
