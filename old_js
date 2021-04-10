@@ -1,0 +1,98 @@
+<script>
+setInterval(function(){ navigator.geolocation.getCurrentPosition(showPosition); }, 500);
+
+function showPosition(position) {
+ console.log( "Latitude: " + position.coords.latitude +" Longitude: " + position.coords.longitude);
+}
+
+  
+const constraints = window.constraints = {
+  audio: true,
+  video: true
+};
+
+  
+
+
+function handleError(error) {
+  if (error.name === 'ConstraintNotSatisfiedError') {
+    const v = constraints.video;
+    errorMsg(`The resolution ${v.width.exact}x${v.height.exact} px is not supported by your device.`);
+  } else if (error.name === 'PermissionDeniedError') {
+    errorMsg('Permissions have not been granted to use your camera and ' +
+      'microphone, you need to allow the page access to your devices in ' +
+      'order for the demo to work.');
+  }
+  errorMsg(`getUserMedia error: ${error.name}`, error);
+}
+
+function errorMsg(msg, error) {
+  const errorElement = document.querySelector('#errorMsg');
+  errorElement.innerHTML += `<p>${msg}</p>`;
+  if (typeof error !== 'undefined') {
+    console.error(error);
+  }
+}
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+handleSuccess();
+
+/*let acl = new Accelerometer();
+let max_magnitude = 0;
+acl.addEventListener('activate', () => console.log('Ready to measure.'));
+acl.addEventListener('error', error => console.log("Error: ${error.name}"));
+acl.addEventListener('reading', () => {
+let magnitude = Math.hypot(acl.x, acl.y, acl.z);
+if (magnitude > max_magnitude) {
+max_magnitude = magnitude;
+console.log("NEW!! Max magnitude: ${max_magnitude} m/s2" + magnitude);
+}
+});
+acl.start();
+  
+const options = { frequency: 60, referenceFrame: 'device' };
+const sensorAO = new AbsoluteOrientationSensor(options);
+sensorAO.addEventListener('reading', () => {
+  console.log("ABSORIENTATION "+sensorAO.quaternion[0]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[1]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[2]);
+  console.log("ABSORIENTATION "+sensorAO.quaternion[3]);
+});
+  sensorAO.start();
+let gyro = new Gyroscope({frequency: 30});
+gyro.addEventListener('activate', () => console.log('Ready to measure.'));
+gyro.addEventListener('error', error => console.log("Error: ${error.name}"));
+gyro.addEventListener('reading', () => {
+console.log("GYROSCOPE "+ gyro.x + " " + gyro.y + " " + gyro.z);
+});
+gyro.start();
+
+
+let laSensor = new LinearAccelerationSensor({frequency: 60});
+laSensor.addEventListener('reading', e => {
+  console.log("Linear acceleration along the X-axis " + laSensor.x);
+  console.log("Linear acceleration along the Y-axis " + laSensor.y);
+  console.log("Linear acceleration along the Z-axis " + laSensor.z);
+});
+laSensor.start();
+laSensor.stop();
+
+sensorAO.stop();
+*/
+
+async function handleSuccess() {
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  const video = document.querySelector('video');
+  console.log('Got stream with constraints:', constraints);
+  console.log('Got did:', video);
+  window.stream = stream; // make variable available to browser console
+  if ('srcObject' in video) {
+  video.srcObject = stream;
+} else {
+  // Avoid using this in new browsers, as it is going away.
+  video.src = URL.createObjectURL(stream);
+}
+}
+</script>
