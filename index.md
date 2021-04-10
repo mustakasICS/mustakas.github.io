@@ -39,7 +39,7 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 
 <div id="dummy"></div>
 <script>
-document.getElementById("demo").addEventListener("touchstart", function (event) {
+document.getElementById("dummy").addEventListener("touchstart", function (event) {
     document.getElementById("dummy").innerHTML = event.page.X + "," + event.page.Y;
 });
 window.addEventListener("devicemotion", function(event) {
