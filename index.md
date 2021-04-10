@@ -1,8 +1,12 @@
-<div id="dummy" style="color:blue;text-align:center;height: 200px;width: 500px;"></div>
+<div id="dummy" style=" background-color:powderblue;text-align:center;height: 100%;width:100%;"></div>
 
 <script>
 document.getElementById("dummy").addEventListener("touchstart", function (event) {
-    document.getElementById("dummy").innerHTML = event.page.X + "," + event.page.Y;
+      var i;
+  for (i=0; i < e.touches.length; i++) {
+    console.log("touchpoint[" + i + "].screenX = " + e.touches[i].screenX);
+    console.log("touchpoint[" + i + "].screenY = " + e.touches[i].screenY);
+  }
 });
 window.addEventListener("devicemotion", function(event) {
 
