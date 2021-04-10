@@ -4,8 +4,8 @@
 document.getElementById("dummy").addEventListener("touchstart", function (event) {
       var i;
   for (i=0; i < event.touches.length; i++) {
-    console.log("touchpoint[" + i + "].screenX = " + e.touches[i].screenX);
-    console.log("touchpoint[" + i + "].screenY = " + e.touches[i].screenY);
+    console.log("touchpoint[" + i + "].screenX = " + event.touches[i].screenX);
+    console.log("touchpoint[" + i + "].screenY = " + event.touches[i].screenY);
   }
 });
 window.addEventListener("devicemotion", function(event) {
