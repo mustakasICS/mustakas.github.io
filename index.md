@@ -3,7 +3,7 @@
 <script>
 document.getElementById("dummy").addEventListener("touchstart", function (event) {
       var i;
-  for (i=0; i < e.touches.length; i++) {
+  for (i=0; i < event.touches.length; i++) {
     console.log("touchpoint[" + i + "].screenX = " + e.touches[i].screenX);
     console.log("touchpoint[" + i + "].screenY = " + e.touches[i].screenY);
   }
