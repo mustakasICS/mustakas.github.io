@@ -47,8 +47,8 @@ window.addEventListener("devicemotion", function(event) {
 var touchX = -2;
 var touchY = -2;
 var ts = (new Date()).getTime() / 1000
-console.log(touch, ",", touch, "," ,"ACCEL,", ts, "," , event.accelerationIncludingGravity.x, "," , event.accelerationIncludingGravity.y , "," , event.accelerationIncludingGravity.z);
-console.log(touch, ",", touch, "," ,"GYRO,", ts, "," , event.rotationRate.alpha , "," , event.rotationRate.beta , "," , event.rotationRate.gamma);
+console.log(touchX, ",", touchY, "," ,"ACCEL,", ts, "," , event.accelerationIncludingGravity.x, "," , event.accelerationIncludingGravity.y , "," , event.accelerationIncludingGravity.z);
+console.log(touchX, ",", touchY, "," ,"GYRO,", ts, "," , event.rotationRate.alpha , "," , event.rotationRate.beta , "," , event.rotationRate.gamma);
 
 }, true);
 </script>
