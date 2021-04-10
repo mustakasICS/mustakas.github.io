@@ -37,5 +37,18 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
 
-<img src="">
-<canvas style="display:none;"></canvas>
+<div id="dummy"></div>
+<script>
+document.getElementById("demo").addEventListener("touchstart", function (event) {
+    document.getElementById("dummy").innerHTML = event.page.X + "," + event.page.Y;
+});
+window.addEventListener("devicemotion", function(event) {
+
+var touchX = -2;
+var touchY = -2;
+var ts = (new Date()).getTime() / 1000
+console.log(touch, ",", touch, "," ,"ACCEL,", ts, "," , event.accelerationIncludingGravity.x, "," , event.accelerationIncludingGravity.y , "," , event.accelerationIncludingGravity.z);
+console.log(touch, ",", touch, "," ,"GYRO,", ts, "," , event.rotationRate.alpha , "," , event.rotationRate.beta , "," , event.rotationRate.gamma);
+
+}, true);
+</script>
