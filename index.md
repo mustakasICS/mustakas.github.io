@@ -20,7 +20,7 @@ var touch = document.getElementById("dummy").innerHTML;
 var ts = (new Date()).getTime() / 1000;
 
 console.log(touch, "," ,"ACCEL,", ts, "," , event.acceleration.x/9.81, "," , event.acceleration.y/9.81 , "," , event.acceleration.z/9.81);
-console.log(touch, "," ,"GYRO,", ts, "," , parseFloat(event.rotationRate.alpha) , "," , parseFloat(event.rotationRate.beta) , "," , parseFloat(event.rotationRate.gamma));
+console.log(touch, "," ,"GYRO,", ts, "," , event.rotationRate.alpha/9.81 , "," , event.rotationRate.beta/9.81 , "," , event.rotationRate.gamma/9.81);
 }, false);
 
 </script>
