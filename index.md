@@ -21,5 +21,5 @@ var ts = (new Date()).getTime() / 1000;
 
 console.log(touch, "," ,"ACCEL,", ts, "," , String(event.acceleration.x), "," , String(event.acceleration.y) , "," , String(event.acceleration.z));
 console.log(touch, "," ,"GYRO,", ts, "," , parseFloat(event.rotationRate.alpha) , "," , parseFloat(event.rotationRate.beta) , "," , parseFloat(event.rotationRate.gamma));
-}, true);
+}, false);
 </script>
