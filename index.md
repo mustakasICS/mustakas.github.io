@@ -35,7 +35,7 @@ try {
     }
   };
   accelerometer.onreading = (e) => {
-    console.log(e);
+    console.log(e.x);
   };
   accelerometer.start();
 } catch (error) {
