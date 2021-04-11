@@ -19,7 +19,7 @@ window.addEventListener("devicemotion", function(event) {
 var touch = document.getElementById("dummy").innerHTML;
 var ts = (new Date()).getTime() / 1000;
 
-console.log(touch, "," ,"ACCEL,", ts, "," , event.accelerationIncludingGravity.x, "," , event.accelerationIncludingGravity.y , "," , event.accelerationIncludingGravity.z);
+console.log(touch, "," ,"ACCEL,", ts, "," , event.acceleration.x, "," , event.acceleration.y , "," , event.acceleration.z);
 console.log(touch, "," ,"GYRO,", ts, "," , event.rotationRate.alpha , "," , event.rotationRate.beta , "," , event.rotationRate.gamma);
 
 }, true);
