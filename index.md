@@ -20,15 +20,6 @@ var touch = document.getElementById("dummy").innerHTML;
 var ts = (new Date()).getTime() / 1000;
 
 console.log(touch, "," ,"ACCEL,", ts, "," , event.acceleration.x, "," , event.acceleration.y , "," , event.acceleration.z);
-
-
-}, true);
-
-window.addEventListener("deviceorientation", function(event) {
-
-var touch = document.getElementById("dummy").innerHTML;
-var ts = (new Date()).getTime() / 1000;
-console.log(touch, "," ,"GYRO,", ts, "," , event.alpha , "," , event.beta , "," , event.gamma);
-
+console.log(touch, "," ,"GYRO,", ts, "," , event.rotationRate.alpha , "," , event.rotationRate.beta , "," , event.rotationRate.gamma);
 }, true);
 </script>
